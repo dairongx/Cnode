@@ -11,6 +11,9 @@
                             <p>{{r.author.loginname}}</p>
                             <p>{{r.create_at | date}}</p>
                         </div>
+                        <div class="right">
+                            <div v-if="r.top">置顶</div>
+                        </div>
                     </div>
                     <h2>{{r.title}}</h2>
                     <div class="bottom">
@@ -69,7 +72,7 @@
             },
             scroll() {   /* 下拉加载更多 */
                 let $scrollTop = window.pageYOffset,
-                    $clientHeight = document.body.clientHeight,
+                    $clientHeight = document.documentElement.clientHeight,
                     $scrollHeight = document.documentElement.scrollHeight;
                 if ($scrollHeight - ($scrollTop + $clientHeight) < 50) {
                     if (this.more) {
@@ -118,13 +121,25 @@
                                 color: #333;
                             }
                         }
+                        .right{
+                            div{
+                                padding: 0 10px;
+                                font-size: 13px;
+                                line-height: 26px;
+                                color: #fff;
+                                border-radius: 5px;
+                                text-align: center;
+                                margin: 5px 30px 0 0;
+                                background-color: #80bd01;
+                            }
+                        }
                     }
                 }
             }
             h2 {
                 padding: 5px 10px;
                 line-height: 26px;
-                font-size: 18px;
+                font-size: 16px;
                 color: #000;
                 text-align: left;
                 border-bottom: 1px solid #e5e5e5;

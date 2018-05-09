@@ -4,7 +4,10 @@ import list from '@/page/index/list'
 import index from '@/page/index/index'
 import topic from '@/page/topic/topic'
 import user from '@/page/user/user'
+import login from '@/page/user/login'
+import userInfo from '@/page/user/userInfo'
 import msg from '@/page/msg/msg'
+import publish from '@/page/publish/publish'
 
 Vue.use(Router)
 
@@ -32,12 +35,24 @@ export default new Router({
         },
         {
             path: '/user',
-            component: user
-        }
-        ,
+            name: 'user',
+            component: user,
+        },
         {
             path: '/msg',
             component: msg
+        },
+        {
+            path: '/publish',
+            component: publish
+        },
+        {
+            path: '/login',
+            component: login
+        },
+        {
+            path: '/userInfo',
+            component: userInfo
         }
     ]
 })

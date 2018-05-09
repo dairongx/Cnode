@@ -1,12 +1,17 @@
 <template>
     <div v-if="show">
-        <p>你还未登录，请先 <a href="JavaScript:;">登录</a></p>
+        <p>你还未登录，请先 <a href="JavaScript:;" @click="login">登录</a></p>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['show']
+        props: ['show'],
+        methods:{
+            login(){
+                this.$router.push('/login');
+            }
+        }
     }
 </script>
 

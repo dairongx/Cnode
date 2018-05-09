@@ -6,7 +6,7 @@
             <li :class="[this.$route.path.split('/')[1]==='index' ? 'active':'']" @click="go('/index')">
                 <i class="icon-index"></i>首页
             </li>
-            <li :class="[this.$route.path==='/send' ? 'active':'']" @click="go('/send')">
+            <li :class="[this.$route.path==='/publish' ? 'active':'']" @click="go('/publish')">
                 <i class="icon-send"></i>发表
             </li>
             <li :class="[this.$route.path==='/msg' ? 'active':'']" @click="go('/msg')">
@@ -29,7 +29,6 @@
         methods: {
             go(path) {
                 this.$router.push(path);
-                console.log(this.$route)
             }
         }
     }
@@ -53,6 +52,7 @@
         line-height: 45px;
         font-size: 14px;
         background: #fff;
+        cursor: pointer;
     }
 
     .footer ul li a {

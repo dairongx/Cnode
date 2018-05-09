@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-head txt="消息" :show="headerShow"></v-head>
-        <div class="msg">
+        <v-head txt="发表" :show="headerShow"></v-head>
+        <div class="publish">
             <no-login :show="isLogin"></no-login>
         </div>
         <v-footer></v-footer>
@@ -37,7 +37,7 @@
 </script>
 
 <style lang="less" scoped>
-    .msg {
+    .publish {
         min-height: calc(100vh - 51px - 46px);
         padding: 51px 2.7%;
         background-color: #fff;

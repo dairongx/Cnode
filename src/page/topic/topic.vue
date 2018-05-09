@@ -1,17 +1,14 @@
 <template>
     <div class="topics">
-        <div class="topics_top">
-            <h3>主题</h3>
-            <span @click="back" class="icon-back"></span>
-        </div>
+        <v-head txt="主题" :show="headerShow"></v-head>
         <div class="main">
             <div class="author clear">
                 <div class="img left">
                     <img :src="topics.author.avatar_url" alt="">
                 </div>
                 <div class="left">
-                    <span class="name">{{topics.author.loginname}}</span><span
-                        class="time">{{topics.create_at | date}}</span>
+                    <span class="name">{{topics.author.loginname}}</span>
+                    <span class="time">{{topics.create_at | date}}</span>
                 </div>
                 <div class="right">
                     <span>#楼主</span>
@@ -19,7 +16,9 @@
             </div>
             <div class="content">
                 <h2>{{topics.title}}</h2>
-                <div><span><i class="icon-watch"></i>{{topics.visit_count}}</span><span><i class="icon-msg"></i>{{topics.reply_count}}</span>
+                <div>
+                    <span><i class="icon-watch"></i>{{topics.visit_count}}</span>
+                    <span><i class="icon-msg"></i>{{topics.reply_count}}</span>
                 </div>
                 <div v-html="topics.content"></div>
             </div>
@@ -33,8 +32,8 @@
                                 <img :src="replie.author.avatar_url" alt="">
                             </div>
                             <div class="left">
-                                <span class="name">{{replie.author.loginname}}</span><span
-                                    class="time">{{replie.create_at | date}}</span>
+                                <span class="name">{{replie.author.loginname}}</span>
+                                <span class="time">{{replie.create_at | date}}</span>
                             </div>
                             <div class="right">
                                 <span>#{{index+1}}</span>
@@ -42,7 +41,7 @@
                         </div>
                         <div class="content con" v-html="replie.content"></div>
                         <div class="bottom">
-                            <i class="icon-like"></i><span>{{replie.ups.length}}</span>
+                            <i class="icon-like" @click="like"></i><span>{{replie.ups.length}}</span>
                         </div>
                     </li>
                 </ul>
@@ -56,12 +55,16 @@
 <script>
     import loading from '@/components/loading'
     import login from '@/components/isLogin'
+    import vHead from '@/components/header2'
 
     export default {
         data() {
             return {
                 topics: [],
-                show: false
+                show: false,
+                type: '',
+                txt: '',
+                headerShow: true
             }
         },
         computed:{
@@ -75,7 +78,8 @@
         },
         components: {
             loading,
-            login
+            login,
+            vHead
         },
         mounted() {
             const that = this;
@@ -88,12 +92,16 @@
                 this.axios.get(url)
                     .then(res => {
                         this.topics = res.data.data;
-                        console.log(res.data.data);
                         this.show = false;
                     })
             },
             back() {
                 this.$router.go(-1)
+            },
+            like(){
+               // console.log(this.$refs.like)
+                this.type='error';
+                this.txt = 'error'
             }
         }
     }

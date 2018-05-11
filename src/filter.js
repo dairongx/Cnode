@@ -24,6 +24,11 @@ function date(val) {
     return parseInt(y) + '年前';
 }
 
+function toLocaleDate(val) {
+    return (new Date(val).toLocaleDateString())
+}
+
 export {
-    date
+    date,
+    toLocaleDate
 }

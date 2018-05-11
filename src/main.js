@@ -8,7 +8,7 @@ import store from './store/store'
 import * as filter from './filter'
 
 Vue.prototype.axios = axios;
-axios.interceptors.request.use(function (config) {
+/*axios.interceptors.request.use(function (config) {
     return config;
 }, function (err) {
     return err
@@ -17,7 +17,7 @@ axios.interceptors.response.use(function (res) {
     return res;
 }, function (err) {
     return err;
-});
+});*/
 
 Object.keys(filter).forEach(key => Vue.filter(key, filter[key]));
 

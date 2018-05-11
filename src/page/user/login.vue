@@ -1,10 +1,12 @@
 <template>
-    <div>
+    <div class="login">
         <v-head txt="登录" :show="headerShow"></v-head>
-        <form>
-            <input type="text" placeholder="accesstoken" v-model.trim="accesstoken">
-            <button @click.prevent="login">登录</button>
-        </form>
+        <div>
+            <form>
+                <input type="text" placeholder="accesstoken" v-model.trim="accesstoken">
+                <button @click.prevent="login">登录</button>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -29,11 +31,9 @@
                 const user = this.accesstoken;
                 if (user !== '') {
                     let url = '/api/v1/accesstoken';
-                    console.log(1)
                     this.axios.post(url, {
                         accesstoken: user
                     }).then(res => {
-                        console.log(res);
                         if (res.status === 200) {
                             let name = res.data.loginname;
                             let avatar_url = res.data.avatar_url;
@@ -45,7 +45,7 @@
                             this.$router.go(-1);
                         }
                         else {
-                            console.log('err')
+                            console.log(res)
                         }
                     }).catch(err => {
                         console.log(err);
@@ -57,7 +57,7 @@
 </script>
 
 <style lang="less" scoped>
-    div {
+    .login {
         width: 100vw;
         height: 100vh;
         background-color: #fff;

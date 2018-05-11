@@ -25,8 +25,8 @@
 
             <div class="comment">
                 <p>共（<span>{{topics.reply_count}}</span>）条评论</p>
-                <ul v-for="(replie,index) in topics.replies">
-                    <li>
+                <ul>
+                    <li v-for="(replie,index) in topics.replies">
                         <div class="author clear">
                             <div class="img left">
                                 <img :src="replie.author.avatar_url" alt="">
@@ -61,7 +61,7 @@
         data() {
             return {
                 topics: [],
-                show: false,
+                show: true,
                 type: '',
                 txt: '',
                 headerShow: true
@@ -79,7 +79,7 @@
         components: {
             loading,
             login,
-            vHead
+            vHead,
         },
         mounted() {
             const that = this;

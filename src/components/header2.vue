@@ -10,10 +10,11 @@
         name: 'header',
         props: {
             txt:{
-                type: String
+                type: String,
+                default: 'text'
             },
             show:{
-                type: Boolean
+                type: Boolean,
             }
         },
         methods:{

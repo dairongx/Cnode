@@ -12,7 +12,7 @@
                             <span>未登录</span>
                         </div>
                         <div class="right">
-                            <span> > </span>
+                            <i class="icon-right-arrow"></i>
                         </div>
                     </a>
                 </div>

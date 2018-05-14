@@ -1,5 +1,3 @@
-/* Created by drx on 2018/3/29 */
-
 <template>
     <div class="footer">
         <ul class="clear">

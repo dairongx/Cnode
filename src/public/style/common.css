@@ -103,7 +103,11 @@ h1, h2, h3, h4, h5, h6 {
     content: "\e907";
 }
 
-.markdown-text{
+.icon-right-arrow:before {
+    content: "\e90e";
+}
+
+.markdown-text {
     font-size: 14px;
 }
 
@@ -117,13 +121,16 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     word-wrap: break-word;
 }
-.markdown-text pre{
-    width: 90%;
+
+.markdown-text pre {
+    width: 88%;
     margin: 0 auto;
+    padding: 5px 10px;
     overflow-x: auto;
     background-color: #ebebeb;
 }
-.markdown-text pre code{
+
+.markdown-text pre code {
     width: 100%;
     font-size: 15px;
 }

@@ -24,27 +24,30 @@
             </div>
 
             <div class="comment">
-                <p>共（<span>{{topics.reply_count}}</span>）条评论</p>
-                <ul>
-                    <li v-for="(replie,index) in topics.replies">
-                        <div class="author clear">
-                            <div class="img left">
-                                <img :src="replie.author.avatar_url" alt="">
+                <div v-if="topics.reply_count===0"><p>暂无评论</p></div>
+                <div v-if="topics.reply_count!==0">
+                    <p>共（<span>{{topics.reply_count}}</span>）条评论</p>
+                    <ul>
+                        <li v-for="(replie,index) in topics.replies">
+                            <div class="author clear">
+                                <div class="img left">
+                                    <img :src="replie.author.avatar_url" alt="">
+                                </div>
+                                <div class="left">
+                                    <span class="name">{{replie.author.loginname}}</span>
+                                    <span class="time">{{replie.create_at | date}}</span>
+                                </div>
+                                <div class="right">
+                                    <span>#{{index+1}}</span>
+                                </div>
                             </div>
-                            <div class="left">
-                                <span class="name">{{replie.author.loginname}}</span>
-                                <span class="time">{{replie.create_at | date}}</span>
+                            <div class="content con" v-html="replie.content"></div>
+                            <div class="bottom">
+                                <i class="icon-like" @click="like"></i><span>{{replie.ups.length}}</span>
                             </div>
-                            <div class="right">
-                                <span>#{{index+1}}</span>
-                            </div>
-                        </div>
-                        <div class="content con" v-html="replie.content"></div>
-                        <div class="bottom">
-                            <i class="icon-like" @click="like"></i><span>{{replie.ups.length}}</span>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <loading class="loading" :show="show"></loading>
@@ -67,11 +70,11 @@
                 headerShow: true
             }
         },
-        computed:{
-            login(){
-                if(this.$store.state.accesstoken){
+        computed: {
+            login() {
+                if (this.$store.state.accesstoken) {
                     return false;
-                }else{
+                } else {
                     return true;
                 }
             }
@@ -98,9 +101,9 @@
             back() {
                 this.$router.go(-1)
             },
-            like(){
-               // console.log(this.$refs.like)
-                this.type='error';
+            like() {
+                // console.log(this.$refs.like)
+                this.type = 'error';
                 this.txt = 'error'
             }
         }
@@ -195,37 +198,39 @@
                 }
             }
             .comment {
-                & > p {
-                    text-align: left;
-                    line-height: 36px;
-                    font-size: 14px;
-                    color: #000;
-                    padding-left: 10px;
-                    border-top: 1px solid #e5e5e5;
-                    border-bottom: 1px solid #e5e5e5;
-                    border-left: 5px solid #1fa420;
-                    span {
-                        color: #1fa420;
-                    }
-                }
-                .author {
-                    border-bottom: 0;
-                }
-                li {
-                    border-bottom: 1px solid #e5e5e5;
-                    .author {
-                        padding: 8px 0 0 15px;
-                    }
-                    .content {
-                        padding: 0 35px;
+                div{
+                    & > p {
                         text-align: left;
-                        font-size: 18px;
                         line-height: 36px;
-                        word-wrap: break-word;
+                        font-size: 14px;
+                        color: #000;
+                        padding-left: 10px;
+                        border-top: 1px solid #e5e5e5;
+                        border-bottom: 1px solid #e5e5e5;
+                        border-left: 5px solid #1fa420;
+                        span {
+                            color: #1fa420;
+                        }
                     }
-                    .bottom {
-                        text-align: right;
-                        padding: 0 45px 20px 0;
+                    .author {
+                        border-bottom: 0;
+                    }
+                    li {
+                        border-bottom: 1px solid #e5e5e5;
+                        .author {
+                            padding: 8px 0 0 15px;
+                        }
+                        .content {
+                            padding: 0 35px;
+                            text-align: left;
+                            font-size: 18px;
+                            line-height: 36px;
+                            word-wrap: break-word;
+                        }
+                        .bottom {
+                            text-align: right;
+                            padding: 0 45px 20px 0;
+                        }
                     }
                 }
             }

@@ -12,7 +12,7 @@ function date(val) {
                 if (h < 1) {
                     return parseInt(m) + '分钟前';
                     if(m<1){
-                        return '刚刚'
+                        return '刚刚';
                     }
                 }
                 return parseInt(h) + '小时前';

@@ -2,20 +2,20 @@
     <div class="app">
         <div class="index">
             <ul>
-                <li v-for="r in res" @click="go(r.id)">
+                <li v-for="r in res">
                     <div class="title clear">
-                        <div class="left img">
+                        <div class="left img" @click="userInfo(r.author.loginname)">
                             <img :src="r.author.avatar_url" alt="">
                         </div>
                         <div class="left">
-                            <p>{{r.author.loginname}}</p>
+                            <p @click="userInfo(r.author.loginname)">{{r.author.loginname}}</p>
                             <p>{{r.create_at | date}}</p>
                         </div>
                         <div class="right">
                             <div v-if="r.top">置顶</div>
                         </div>
                     </div>
-                    <h2>{{r.title}}</h2>
+                    <h2 @click="go(r.id)">{{r.title}}</h2>
                     <div class="bottom">
                         <span><i class="icon-watch"></i>{{r.visit_count}}</span>
                         <span><i class="icon-msg"></i>{{r.reply_count}}</span>
@@ -82,6 +82,9 @@
                     }
                 }
 
+            },
+            userInfo(name) {
+                this.$router.push('/userInfo/' + name)
             }
         }
     }
@@ -89,8 +92,12 @@
 
 <style lang="less" scoped>
     .app {
+        position: absolute;
+        top: 50px;
+        bottom: 45px;
+        left: 0;
         width: 100%;
-        margin: 50px 0 45px;
+        height: calc(100% - 95px);
         .index {
             ul {
                 li {
@@ -121,8 +128,8 @@
                                 color: #333;
                             }
                         }
-                        .right{
-                            div{
+                        .right {
+                            div {
                                 padding: 0 10px;
                                 font-size: 13px;
                                 line-height: 26px;

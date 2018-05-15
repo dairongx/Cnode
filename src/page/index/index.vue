@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="index">
         <v-header></v-header>
 
         <keep-alive>
@@ -24,5 +24,9 @@
 </script>
 
 <style lang="less" scoped>
-
+    .index{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 </style>

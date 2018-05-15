@@ -71,38 +71,36 @@ h1, h2, h3, h4, h5, h6 {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-collect:before {
+    content: "\e908";
+}
 .icon-email:before {
     content: "\e900";
 }
-
 .icon-like:before {
     content: "\e901";
 }
-
 .icon-send:before {
     content: "\e902";
 }
-
 .icon-self:before {
     content: "\e903";
 }
-
 .icon-index:before {
     content: "\e904";
 }
-
 .icon-back:before {
     content: "\e905";
 }
-
 .icon-msg:before {
     content: "\e906";
 }
-
 .icon-watch:before {
     content: "\e907";
 }
-
+.icon-info:before {
+    content: "\e90c";
+}
 .icon-right-arrow:before {
     content: "\e90e";
 }

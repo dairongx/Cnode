@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pub">
         <v-head txt="发表" :show="headerShow"></v-head>
         <div class="publish">
             <no-login :show="isLogin"></no-login>
@@ -37,9 +37,16 @@
 </script>
 
 <style lang="less" scoped>
+    .pub{
+        position: absolute;
+        top: 51px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
     .publish {
         min-height: calc(100vh - 51px - 46px);
-        padding: 51px 2.7%;
+        padding: 0 2.7%;
         background-color: #fff;
     }
 

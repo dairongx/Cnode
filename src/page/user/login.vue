@@ -12,6 +12,7 @@
 
 <script>
     import vHead from '@/components/header2'
+    import {mapMutations} from 'vuex'
 
     export default {
         data() {
@@ -24,6 +25,7 @@
             vHead
         },
         methods: {
+            ...mapMutations(['access','name','avatar']),
             go() {
                 this.$router.go(-1)
             },
@@ -42,7 +44,10 @@
                             window.sessionStorage.setItem('loginname', name);
                             window.sessionStorage.setItem('avatar_url', avatar_url);
                             window.sessionStorage.setItem('user_id', user_id);
-                            this.$router.go(-1);
+                            this.access();
+                            this.name();
+                            this.avatar();
+                            this.go();
                         }
                         else {
                             console.log(res)

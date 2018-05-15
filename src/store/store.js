@@ -14,6 +14,15 @@ export default new Vuex.Store({
     mutations: {
         changeType(state, val) {
             state.animateType = val;
+        },
+        access(state){
+            state.accesstoken = window.sessionStorage.getItem('accesstoken');
+        },
+        name(state) {
+            state.loginName = window.sessionStorage.getItem('loginname');
+        },
+        avatar(state) {
+            state.avatar_url =  window.sessionStorage.getItem('avatar_url');
         }
     }
 })

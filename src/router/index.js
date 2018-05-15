@@ -6,6 +6,7 @@ import topic from '@/page/topic/topic'
 import user from '@/page/user/user'
 import login from '@/page/user/login'
 import userInfo from '@/page/user/userInfo'
+import collect from '@/page/user/collect'
 import msg from '@/page/msg/msg'
 import publish from '@/page/publish/publish'
 
@@ -36,7 +37,7 @@ export default new Router({
         {
             path: '/user',
             name: 'user',
-            component: user,
+            component: user
         },
         {
             path: '/msg',
@@ -51,8 +52,12 @@ export default new Router({
             component: login
         },
         {
-            path: '/userInfo',
+            path: '/userInfo/:user',
             component: userInfo
+        },
+        {
+            path: '/collect',
+            component: collect
         }
     ]
 })

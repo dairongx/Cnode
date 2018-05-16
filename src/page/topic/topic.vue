@@ -1,7 +1,7 @@
 <template>
     <div class="topics">
         <v-head txt="主题" :show="headerShow"></v-head>
-        <div class="main">
+        <div class="main" v-if="topics">
             <div class="author clear">
                 <div class="img left">
                     <img :src="topics.author.avatar_url" alt="">
@@ -63,7 +63,7 @@
     export default {
         data() {
             return {
-                topics: [],
+                topics: null,
                 show: true,
                 type: '',
                 txt: '',
@@ -112,6 +112,10 @@
 
 <style lang="less" scoped>
 
+    .loading{
+        padding-top: 81px;
+    }
+
     .topics {
         min-height: 100vh;
         background-color: #fff;
@@ -140,7 +144,7 @@
             }
         }
         .main {
-            margin-top: 50px;
+            margin-top: 51px;
             .author {
                 padding: 8px 0 8px 15px;
                 border-bottom: 1px solid #e5e5e5;

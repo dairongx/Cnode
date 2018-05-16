@@ -1,5 +1,5 @@
 <template>
-    <div class="app">
+    <div class="app" ref="app">
         <div class="index">
             <ul>
                 <li v-for="r in res">
@@ -46,7 +46,7 @@
         mounted() {
             let that = this;
             that.getData(that.$route.params[0]);
-            window.addEventListener('scroll', that.scroll)
+            that.$nextTick(that.$refs.app.addEventListener('scroll', that.scroll))
         },
         methods: {
             getData(data) {   /* 加载数据 */
@@ -71,9 +71,9 @@
                 this.$router.push('/topic/' + id)
             },
             scroll() {   /* 下拉加载更多 */
-                let $scrollTop = window.pageYOffset,
-                    $clientHeight = document.documentElement.clientHeight,
-                    $scrollHeight = document.documentElement.scrollHeight;
+                let $scrollTop = this.$refs.app.scrollTop,
+                    $clientHeight = this.$refs.app.clientHeight,
+                    $scrollHeight = this.$refs.app.scrollHeight;
                 if ($scrollHeight - ($scrollTop + $clientHeight) < 50) {
                     if (this.more) {
                         this.more = false;
@@ -84,7 +84,7 @@
 
             },
             userInfo(name) {
-                this.$router.push('/userInfo/' + name)
+                this.$router.push('/user/userInfo/' + name)
             }
         }
     }
@@ -97,7 +97,8 @@
         bottom: 45px;
         left: 0;
         width: 100%;
-        height: calc(100% - 95px);
+        height: calc(100vh - 95px);
+        overflow-y: auto;
         .index {
             ul {
                 li {

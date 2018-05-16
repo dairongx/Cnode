@@ -32,7 +32,7 @@
             </div>
             <div class="self">
                 <div class="mark">
-                    <a href="javascript:;" @click="$router.push('/collect')">
+                    <a href="javascript:;" @click="$router.push('/user/collect')">
                         <i class="icon-collect"></i><span>我的收藏</span>
                         <span class="num">{{topic_collect}}</span>
                     </a>
@@ -89,7 +89,7 @@
                 this.$router.push('/login');
             },
             userInfo() {
-                this.$router.push('/userInfo/' + this.loginName);
+                this.$router.push('/user/userInfo/' + this.loginName);
             },
             collect() {
                 let url = '/api/v1/topic_collect/' + this.loginName;
@@ -119,12 +119,12 @@
         position: absolute;
         top: 51px;
         left: 0;
-        bottom: 0;
+        bottom: 10px;
         width: 100%;
     }
 
     .user {
-        min-height: calc(100vh - 51px - 46px);
+        height: 100%;
         background-color: #fbfbfb;
         .no_login, .info {
             text-align: left;

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import list from '@/page/index/list'
 import index from '@/page/index/index'
 import topic from '@/page/topic/topic'
+import user_index from '@/page/user/index'
 import user from '@/page/user/user'
 import login from '@/page/user/login'
 import userInfo from '@/page/user/userInfo'
@@ -37,7 +38,24 @@ export default new Router({
         {
             path: '/user',
             name: 'user',
-            component: user
+            component: user_index,
+            children: [
+                {
+                    path: '',
+                    component: user
+                },
+                {
+                    path: 'collect',
+                    component: collect,
+                    meta:{
+                        requireAuth: true
+                    }
+                },
+                {
+                    path: 'userInfo/:user',
+                    component: userInfo,
+                }
+            ]
         },
         {
             path: '/msg',
@@ -50,14 +68,6 @@ export default new Router({
         {
             path: '/login',
             component: login
-        },
-        {
-            path: '/userInfo/:user',
-            component: userInfo
-        },
-        {
-            path: '/collect',
-            component: collect
         }
     ]
 })

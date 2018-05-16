@@ -45,7 +45,7 @@
         width: 100%;
     }
     .msg {
-        min-height: calc(100vh - 51px - 46px);
+        height: 100%;
         padding: 0 2.7%;
         background-color: #fff;
     }

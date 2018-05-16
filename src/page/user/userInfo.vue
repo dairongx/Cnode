@@ -1,7 +1,7 @@
 <template>
     <div class="userInfo">
         <v-head txt="用户信息" :show="headerShow"></v-head>
-        <div class="info_list">
+        <div class="info_list" v-if="userInfo">
             <div class="avatar_url">
                 <div><img :src="userInfo.avatar_url" alt=""></div>
             </div>
@@ -14,14 +14,14 @@
                 <p class="right">积分：<span>{{userInfo.score}}</span></p>
             </div>
         </div>
-        <div class="recent">
+        <div class="recent" v-if="userInfo">
             <ul class="recent_tab clear">
                 <li @click="toggle('recent_replies')" :class="[recent==='recent_replies'? 'active': '']">最近回复</li>
                 <li @click="toggle('recent_topics')" :class="[recent==='recent_topics'? 'active': '']">最近发布</li>
             </ul>
             <div class="recent_replies recent_info" v-show="recent==='recent_replies'">
                 <ul class="recent_replies_list" v-if="userInfo.recent_replies.length!==0">
-                    <li v-for="item in userInfo.recent_replies" class="clear">
+                    <li v-for="item in userInfo.recent_replies" class="clear" @click="$router.push('/topic/'+item.id)">
                         <div class="left">
                             <img :src="item.author.avatar_url" alt="">
                         </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="recent_topics recent_info" v-show="recent==='recent_topics'">
                 <ul class="recent_topics_list" v-if="userInfo.recent_topics.length!==0">
-                    <li v-for="item in userInfo.recent_topics" class="clear">
+                    <li v-for="item in userInfo.recent_topics" class="clear" @click="$router.push('/topic/'+item.id)">
                         <div class="left">
                             <img :src="item.author.avatar_url" alt="">
                         </div>
@@ -96,7 +96,6 @@
                 let url = '/api/v1/user/' + this.$route.params.user;
                 this.axios.get(url)
                     .then(res => {
-                        console.log(res);
                         if (res.data.success) {
                             this.userInfo = res.data.data;
                             this.loading = false;

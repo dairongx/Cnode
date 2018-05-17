@@ -3,6 +3,16 @@
         <v-head txt="消息" :show="headerShow"></v-head>
         <div class="msg">
             <no-login :show="isLogin"></no-login>
+            <div class="unread">
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="all">
+
+            </div>
         </div>
         <v-footer></v-footer>
     </div>
@@ -14,7 +24,7 @@
     import noLogin from '@/components/isLogin'
 
     export default {
-        date() {
+        data() {
             return {
                 headerShow: false
             }
@@ -45,7 +55,7 @@
         width: 100%;
     }
     .msg {
-        height: 100%;
+        min-height: 100%;
         padding: 0 2.7%;
         background-color: #fff;
     }

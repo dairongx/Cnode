@@ -14,7 +14,7 @@
                 default: 'text'
             },
             show:{
-                type: Boolean,
+                type: Boolean
             }
         },
         methods:{

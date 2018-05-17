@@ -120,6 +120,7 @@
             margin-top: 51px;
             color: #fff;
             background: url(../../public/images/bg.jpg) no-repeat center center;
+            background-size: 100% 100%;
             .avatar_url {
                 padding: 20px 0;
                 text-align: center;
@@ -141,7 +142,7 @@
                 span, a {
                     margin-left: 5px;
                 }
-                a{
+                a {
                     color: #00f4ff;
                     text-decoration: underline;
                 }
@@ -175,7 +176,7 @@
                 line-height: 45px;
                 text-align: center;
                 font-size: 14px;
-                &.active{
+                &.active {
                     border-bottom: 2px solid #6d93cc;
                 }
             }
@@ -213,12 +214,12 @@
                     }
                 }
             }
-            .no{
+            .no {
                 width: 150px;
                 height: 150px;
                 margin: 20px auto;
                 overflow: hidden;
-                img{
+                img {
                     width: 100%;
                 }
             }

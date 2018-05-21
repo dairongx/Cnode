@@ -18,7 +18,7 @@
                     <p v-show="err">标题至少10字</p>
                 </div>
                 <div class="line">
-                    <textarea v-model="content" rows="20" placeholder="支持markdown语法"></textarea>
+                    <textarea v-model="content" rows="20" ></textarea>
                 </div>
                 <div class="line">
                     <button @click="newTopics"><i class="icon-send"></i>发表</button>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import vHead from '@/components/header2'
+    import vHead from '@/components/title'
     import vFooter from '@/components/footer'
     import noLogin from '@/components/isLogin'
 

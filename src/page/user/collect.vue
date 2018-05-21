@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import vHead from '@/components/header2'
+    import vHead from '@/components/title'
 
     export default {
         data(){

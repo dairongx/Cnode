@@ -49,16 +49,16 @@
                     </ul>
                 </div>
             </div>
+            <login :show="login"></login>
         </div>
         <loading class="loading" :show="show"></loading>
-        <login :show="login"></login>
     </div>
 </template>
 
 <script>
     import loading from '@/components/loading'
     import login from '@/components/isLogin'
-    import vHead from '@/components/header2'
+    import vHead from '@/components/title'
 
     export default {
         data() {
@@ -105,17 +105,15 @@
                 // console.log(this.$refs.like)
                 this.type = 'error';
                 this.txt = 'error'
+            },
+            collect(){
+
             }
         }
     }
 </script>
 
 <style lang="less" scoped>
-
-    .loading{
-        padding-top: 81px;
-    }
-
     .topics {
         min-height: 100vh;
         background-color: #fff;

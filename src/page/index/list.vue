@@ -1,8 +1,8 @@
 <template>
-    <div class="app" ref="app">
+    <div class="app" ref="app" id="scroll">
         <div class="index">
-            <ul>
-                <li v-for="r in res">
+            <ul v-if="list">
+                <li v-for="r in list">
                     <div class="title clear">
                         <div class="left img" @click="userInfo(r.author.loginname)">
                             <img :src="r.author.avatar_url" alt="">
@@ -34,8 +34,9 @@
     export default {
         data() {
             return {
-                res: [],
+                list: [],
                 show: false,
+                page: 1,
                 limit: 20,
                 more: true
             }
@@ -45,23 +46,26 @@
         },
         mounted() {
             let that = this;
+            // console.log(this.$router)
             that.getData(that.$route.params[0]);
             that.$nextTick(that.$refs.app.addEventListener('scroll', that.scroll))
         },
         methods: {
             getData(data) {   /* 加载数据 */
+                let that = this;
                 let url = '/api/v1/topics',
                     tab = data,
+                    page = this.page,
                     limit = this.limit;
                 if (tab === 'all') {
                     tab = '';
                 }
-                this.show = true;
-                this.axios.get(url, {params: {tab: tab, limit: limit}})
+                that.show = true;
+                that.axios.get(url, {params: {page: page, tab: tab, limit: limit}})
                     .then(res => {
-                        this.res = res.data.data;
-                        this.show = false;
-                        this.more = true;
+                        that.list = that.list.concat(res.data.data);
+                        that.show = false;
+                        that.more = true;
                     })
                     .catch(err => {
                         console.log(err);
@@ -77,7 +81,7 @@
                 if ($scrollHeight - ($scrollTop + $clientHeight) < 50) {
                     if (this.more) {
                         this.more = false;
-                        this.limit += 10;
+                        this.page += 1;
                         this.getData(this.$route.params[0])
                     }
                 }
@@ -92,7 +96,7 @@
 
 <style lang="less" scoped>
     .app {
-        position: absolute;
+        position: fixed;
         top: 50px;
         bottom: 45px;
         left: 0;

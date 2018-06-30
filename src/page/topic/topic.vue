@@ -106,7 +106,7 @@
                 this.type = 'error';
                 this.txt = 'error'
             },
-            collect(){
+            collect() {
 
             }
         }
@@ -115,7 +115,7 @@
 
 <style lang="less" scoped>
     .topics {
-        min-height: 100vh;
+        min-height: calc(100vh - 51px);
         background-color: #fff;
         .topics_top {
             position: fixed;
@@ -200,7 +200,7 @@
                 }
             }
             .comment {
-                div{
+                div {
                     & > p {
                         text-align: left;
                         line-height: 36px;

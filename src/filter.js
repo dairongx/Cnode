@@ -1,4 +1,3 @@
-
 function date(val) {
     let time = new Date() - new Date(val).getTime(),
         m = time / 1000 / 60,
@@ -6,14 +5,14 @@ function date(val) {
         day = h / 24,
         mon = day / 30,
         y = mon / 12;
-    if(y<1){
+    if (y < 1) {
         if (mon < 1) {
             if (day < 1) {
                 if (h < 1) {
-                    return parseInt(m) + '分钟前';
-                    if(m<1){
+                    if (m < 1) {
                         return '刚刚';
                     }
+                    return parseInt(m) + '分钟前';
                 }
                 return parseInt(h) + '小时前';
             }

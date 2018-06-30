@@ -1,8 +1,9 @@
 <template>
     <div id="app">
         <keep-alive>
-            <router-view :key="$route.fullPath"/>
+            <router-view v-if="$route.meta.keepAlive" :key="$route.fullPath"/>
         </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive" :key="$route.fullPath"/>
     </div>
 </template>
 
@@ -13,8 +14,6 @@
 </script>
 
 <style>
-    @import url(./public/style/common.css);
-
     #app {
         position: relative;
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -7,7 +7,6 @@
 
 <script>
     export default {
-        name: 'header',
         props: {
             txt:{
                 type: String,

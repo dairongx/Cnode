@@ -3,8 +3,9 @@
         <v-header></v-header>
 
         <keep-alive>
-            <router-view class="child" :key="$route.fullPath"/>
+            <router-view class="child" v-if="$route.meta.keepAlive" :key="$route.fullPath"/>
         </keep-alive>
+        <router-view class="child" v-if="!$route.meta.keepAlive" :key="$route.fullPath"/>
 
         <v-footer></v-footer>
     </div>
@@ -24,7 +25,7 @@
 </script>
 
 <style lang="less" scoped>
-    .index{
+    .index {
         position: relative;
         width: 100%;
         height: 100vh;

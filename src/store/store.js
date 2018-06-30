@@ -9,7 +9,8 @@ export default new Vuex.Store({
         accesstoken: window.sessionStorage.getItem('accesstoken') || null,
         loginName: window.sessionStorage.getItem('loginname') || null,
         avatar_url: window.sessionStorage.getItem('avatar_url') || null,
-        user_id: window.sessionStorage.getItem('user_id') || null
+        user_id: window.sessionStorage.getItem('user_id') || null,
+        scrollTop: 0
     },
     mutations: {
         changeType(state, val) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
         },
         avatar(state) {
             state.avatar_url =  window.sessionStorage.getItem('avatar_url');
+        },
+        scrollTop(state, val){
+            state.scrollTop = val;
         }
     }
 })

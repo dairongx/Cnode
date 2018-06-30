@@ -155,7 +155,7 @@
                     line-height: 35px;
                     border-radius: 5px;
                     color: #fff;
-                    background-color: #ff1953;
+                    background-color: #164edd;
                     outline: none;
                     border: 0;
                     letter-spacing: 6px;

@@ -16,16 +16,16 @@ export default new Vuex.Store({
         changeType(state, val) {
             state.animateType = val;
         },
-        access(state){
+        access(state) {
             state.accesstoken = window.sessionStorage.getItem('accesstoken');
         },
         name(state) {
             state.loginName = window.sessionStorage.getItem('loginname');
         },
         avatar(state) {
-            state.avatar_url =  window.sessionStorage.getItem('avatar_url');
+            state.avatar_url = window.sessionStorage.getItem('avatar_url');
         },
-        scrollTop(state, val){
+        scrollTop(state, val) {
             state.scrollTop = val;
         }
     }

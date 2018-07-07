@@ -40,7 +40,7 @@
         i {
             position: absolute;
             top: 0;
-            left: 20px;
+            left: 5px;
             width: 30px;
             height: 50px;
             font-size: 18px;

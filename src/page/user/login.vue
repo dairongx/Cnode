@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <v-head txt="登录" :show="headerShow"></v-head>
-        <div>
+        <div class="login_content">
             <form>
                 <input type="text" placeholder="accesstoken" v-model.trim="accesstoken">
                 <button @click.prevent="login">登录</button>
@@ -66,8 +66,13 @@
         width: 100vw;
         height: 100vh;
         background-color: #fff;
+        .login_content{
+            height: calc(100vh - 51px);
+            padding-top: 51px;
+            overflow: hidden;
+        }
         form {
-            padding-top: 80px;
+            padding-top: 50px;
             input {
                 width: 80%;
                 height: 40px;

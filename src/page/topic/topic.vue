@@ -158,19 +158,23 @@
             },
             //收藏
             collect(id, is_collect) {
-                let url = is_collect ? `/api/v1/topic_collect/de_collect` : `/api/v1/topic_collect/collect`;
-                let accesstoken = this.$store.state.accesstoken;
-                this.axios.post(url, {
-                    accesstoken: accesstoken,
-                    topic_id: id
-                }).then(res => {
-                    if (res.data.success) {
-                        let obj = {
-                            is_collect: !is_collect
-                        };
-                        this.topics = Object.assign(this.topics, obj)
-                    }
-                })
+                if(!this.login){
+                    this.showModel = true;
+                }else{
+                    let url = is_collect ? `/api/v1/topic_collect/de_collect` : `/api/v1/topic_collect/collect`;
+                    let accesstoken = this.$store.state.accesstoken;
+                    this.axios.post(url, {
+                        accesstoken: accesstoken,
+                        topic_id: id
+                    }).then(res => {
+                        if (res.data.success) {
+                            let obj = {
+                                is_collect: !is_collect
+                            };
+                            this.topics = Object.assign(this.topics, obj)
+                        }
+                    })
+                }
             },
             // 评论
             add_replie(id,name) {
@@ -193,6 +197,8 @@
                     }).then(res=>{
                         if(res.data.success){
                             this.getData()
+                            this.reply_id = null;
+                            this.reply_text = '';
                         }
                     })
                 }

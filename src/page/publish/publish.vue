@@ -60,16 +60,15 @@
                     title = this.title,
                     content = this.content,
                     url = '/api/v1/topics';
-                console.log(`tab:${tab}`);
                 if (title.length > 10 && content !== '') {
                     this.axios.post(url, {
                         accesstoken: this.isLogin,
                         title: title,
-                        tab: 'dev',
+                        tab: tab,
                         content: content
                     }).then(res=>{
                         if(res.data.success){
-                            alert(1)
+
                         }
                     })
                 }else{

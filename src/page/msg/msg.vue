@@ -14,7 +14,7 @@
                         </li>
                     </ul>
                 </div>
-                <div v-if="ReadMsg.length>0" class="all">
+                <div v-if="ReadMsg.length>0" class="read">
                     <ul>
                         <li v-for="item in ReadMsg" v-html="item">
 
@@ -42,11 +42,7 @@
         },
         computed: {
             isLogin() {
-                if (this.$store.state.accesstoken) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return (this.$store.state.accesstoken ? true : false);
             }
         },
         components: {
@@ -54,18 +50,19 @@
             vFooter,
             noLogin
         },
-        mounted(){
-            this.getMessage()
+        mounted() {
+            if (this.isLogin) {
+                this.getMessage()
+            }
         },
-        methods:{
-            getMessage(){
+        methods: {
+            getMessage() {
                 let accesstoken = this.$store.state.accesstoken;
-                this.axios.get('/api/v1/messages',{
-                    params:{
+                this.axios.get('/api/v1/messages', {
+                    params: {
                         accesstoken: accesstoken
                     }
-                }).then(res=>{
-                    console.log(res)
+                }).then(res => {
                     this.noReadMsg = res.data.data.hasnot_read_messages;
                     this.ReadMsg = res.data.data.has_read_messages;
                 })
@@ -75,19 +72,21 @@
 </script>
 
 <style lang="less" scoped>
-    .message{
+    .message {
         position: absolute;
         top: 51px;
         left: 0;
         bottom: 0;
         width: 100%;
     }
+
     .msg {
         min-height: 100%;
         padding: 0 2.7%;
         background-color: #fff;
     }
-    .noMsg{
+
+    .noMsg {
         padding: 50px 0 0;
         color: #f00;
     }
